@@ -1,0 +1,46 @@
+/* Spinning border keyframes */
+@keyframes spin-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Spinning border class */
+.spin-border {
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-top: 2px solid #06b6d4; /* Cyan top border */
+  border-right: 2px solid #06b6d4; /* Cyan right border */
+  border-radius: 0.5rem; /* rounded */
+  animation: spin-border 2s linear infinite;
+  pointer-events: none;
+}
+
+/* Button background gradient animation */
+@keyframes bgPulse {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.enroll-btn {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  color: #1f2937; /* gray-900 */
+  background: linear-gradient(270deg, #06b6d4, #3b82f6, #06b6d4);
+  background-size: 400% 400%;
+  animation: bgPulse 6s ease infinite;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.enroll-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
