@@ -1,3 +1,116 @@
+// import { useState } from "react";
+// import { Link, NavLink } from "react-router-dom";
+
+// const Navbar = () => {
+//   const [menuOpen, setMenuOpen] = useState(false);
+
+//   const navLinks = ["Home", "About", "Course", "Challenge", "Learning Flow"];
+
+//   return (
+//     <nav className="w-full shadow-md bg-white fixed top-0 z-50">
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//         <div className="flex justify-between h-16 items-center">
+
+//           {/* Logo */}
+//           <Link to="/" className="flex items-center font-bold text-xl text-yellow-500">
+//             Knowlearge
+//           </Link>
+
+//           {/* Desktop Menu */}
+//           <ul className="hidden md:flex space-x-8 items-center">
+//             {navLinks.map((link, idx) => (
+//               <li key={idx}>
+//                 <NavLink
+//                   to={`/${link.replace(/\s+/g, "").toLowerCase()}`}
+//                   className={({ isActive }) =>
+//                     `text-gray-700 hover:text-blue-500 font-medium ${
+//                       isActive ? "text-blue-500" : ""
+//                     }`
+//                   }
+//                 >
+//                   {link}
+//                 </NavLink>
+//               </li>
+//             ))}
+//           </ul>
+
+//           {/* Buttons */}
+//           <div className="hidden md:flex space-x-4">
+//             <button className="px-4 py-1 rounded-full border border-gray-300 hover:bg-gray-100 transition">
+//               Sign Up
+//             </button>
+//             <button className="px-4 py-1 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition">
+//               Sign In
+//             </button>
+//           </div>
+
+//           {/* Mobile menu button */}
+//           <div className="md:hidden">
+//             <button
+//               onClick={() => setMenuOpen(!menuOpen)}
+//               className="text-gray-700 hover:text-blue-500"
+//             >
+//               <svg
+//                 className="h-6 w-6"
+//                 xmlns="http://www.w3.org/2000/svg"
+//                 fill="none"
+//                 viewBox="0 0 24 24"
+//                 stroke="currentColor"
+//               >
+//                 <path
+//                   strokeLinecap="round"
+//                   strokeLinejoin="round"
+//                   strokeWidth={2}
+//                   d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+//                 />
+//               </svg>
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Mobile Menu */}
+//       {menuOpen && (
+//         <div className="md:hidden bg-white shadow-lg">
+//           <ul className="flex flex-col px-4 py-4 space-y-2">
+//             {navLinks.map((link, idx) => (
+//               <li key={idx}>
+//                 <NavLink
+//                   to={`/${link.replace(/\s+/g, "").toLowerCase()}`}
+//                   className={({ isActive }) =>
+//                     `block text-gray-700 hover:text-blue-500 font-medium ${
+//                       isActive ? "text-blue-500" : ""
+//                     }`
+//                   }
+//                   onClick={() => setMenuOpen(false)}
+//                 >
+//                   {link}
+//                 </NavLink>
+//               </li>
+//             ))}
+//             <div className="flex flex-col mt-2 space-y-2">
+//               <button className="w-full px-4 py-1 rounded-full border border-gray-300 hover:bg-gray-100 transition">
+//                 Sign Up
+//               </button>
+//               <button className="w-full px-4 py-1 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition">
+//                 Sign In
+//               </button>
+//             </div>
+//           </ul>
+//         </div>
+//       )}
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+
+
+
+
+
+
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,30 +128,36 @@ const Navbar = () => {
 
     const navlink = (
         <>
-            {["Home", "Store", "About", "Login"].map((item, idx) => (
+            {[
+                { name: "Home", to: "/" },
+                { name: "Store", to: "/store" },
+                { name: "About", to: "/about" },
+                { name: "Login", to: "/login" }
+            ].map((item, idx) => (
                 <li
                     key={idx}
                     className="relative group font-semibold text-lg lg:text-xl transition-all duration-300"
                 >
                     <NavLink
-                        to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                        to={item.to}
                         className={({ isActive }) =>
                             `pb-1 ${isActive ? "text-blue-600 font-bold" : ""}`
                         }
                     >
-                        {item}
+                        {item.name}
                         <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
                     </NavLink>
                 </li>
             ))}
+
         </>
     );
 
     return (
         <div className="sticky top-0 z-50">
             {/* Top banner */}
-            <div className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
-                <div className="max-w-7xl mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-between text-white gap-3">
+            <div className="items-center bg-indigo-500">
+                <div className="max-w-7xl mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-center  text-white gap-3">
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -51,12 +170,12 @@ const Navbar = () => {
 
                     {/* Enroll Now button with spinning border */}
                     <motion.button
-    whileHover={{ scale: 1.05 }}
-    className="enroll-btn text-sm md:text-base relative"
->
-    <span className=""></span>
-    <span className="relative z-10">Enroll Now</span>
-</motion.button>
+                        whileHover={{ scale: 1.05 }}
+                        className="enroll-btn text-sm md:text-base relative"
+                    >
+                        <span className=""></span>
+                        <span className="relative z-10">Enroll Now</span>
+                    </motion.button>
 
                 </div>
             </div>
@@ -79,14 +198,14 @@ const Navbar = () => {
                         {/* Right Side */}
                         <div className="flex items-center gap-4">
                             {/* Search */}
-                            <div className="hidden md:flex items-center bg-white dark:bg-gray-700 px-3 py-1 rounded-full shadow-inner">
+                            {/* <div className="hidden md:flex items-center bg-white dark:bg-gray-700 px-3 py-1 rounded-full shadow-inner">
                                 <FiSearch className="text-gray-500 dark:text-gray-300" />
                                 <input
                                     type="text"
                                     placeholder="Search..."
                                     className="bg-transparent outline-none px-2 text-sm dark:text-white"
                                 />
-                            </div>
+                            </div> */}
 
                             {/* Dark Mode */}
                             <button

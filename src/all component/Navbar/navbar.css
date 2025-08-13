@@ -33,7 +33,7 @@
   padding: 0.4rem 1rem;
   font-weight: 600;
   color: #1f2937; /* gray-900 */
-  background: linear-gradient(270deg, #06b6d4, #3b82f6, #06b6d4);
+  background: linear-gradient(270deg, #d13194, #e2298f, #ff0095);
   background-size: 400% 400%;
   animation: bgPulse 6s ease infinite;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
