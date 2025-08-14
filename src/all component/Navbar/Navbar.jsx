@@ -109,13 +109,12 @@
 
 
 
-
-
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiSearch, FiMoon, FiSun, FiUser, FiGift } from "react-icons/fi";
-import './navbar.css'
+import { FiMoon, FiSun, FiUser, FiGift } from "react-icons/fi";
+import { FaHome, FaStore, FaInfoCircle, FaSignInAlt } from "react-icons/fa";
+import './navbar.css';
 
 const Navbar = () => {
     const [darkMode, setDarkMode] = useState(false);
@@ -129,10 +128,10 @@ const Navbar = () => {
     const navlink = (
         <>
             {[
-                { name: "Home", to: "/" },
-                { name: "Store", to: "/store" },
-                { name: "About", to: "/about" },
-                { name: "Login", to: "/login" }
+                { name: "Home", to: "/", icon: <FaHome className="inline-block mr-2" /> },
+                { name: "Store", to: "/store", icon: <FaStore className="inline-block mr-2" /> },
+                { name: "About", to: "/about", icon: <FaInfoCircle className="inline-block mr-2" /> },
+                { name: "Login", to: "/login", icon: <FaSignInAlt className="inline-block mr-2" /> }
             ].map((item, idx) => (
                 <li
                     key={idx}
@@ -141,15 +140,14 @@ const Navbar = () => {
                     <NavLink
                         to={item.to}
                         className={({ isActive }) =>
-                            `pb-1 ${isActive ? "text-blue-600 font-bold" : ""}`
+                            `flex items-center pb-1 ${isActive ? "text-blue-600 font-bold" : ""}`
                         }
                     >
-                        {item.name}
+                        {item.icon} {item.name}
                         <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
                     </NavLink>
                 </li>
             ))}
-
         </>
     );
 
@@ -157,7 +155,7 @@ const Navbar = () => {
         <div className="sticky top-0 z-50">
             {/* Top banner */}
             <div className="items-center bg-[#3B82F6]">
-                <div className="max-w-7xl mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-center  text-white gap-3">
+                <div className="max-w-7xl mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-center text-white gap-3">
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -168,15 +166,13 @@ const Navbar = () => {
                         <span>Take one option, make life easy!</span>
                     </motion.div>
 
-                    {/* Enroll Now button with spinning border */}
+                    {/* Enroll Now button */}
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         className="enroll-btn text-sm md:text-base relative"
                     >
-                        <span className=""></span>
                         <span className="relative z-10">Enroll Now</span>
                     </motion.button>
-
                 </div>
             </div>
 
@@ -197,16 +193,6 @@ const Navbar = () => {
 
                         {/* Right Side */}
                         <div className="flex items-center gap-4">
-                            {/* Search */}
-                            {/* <div className="hidden md:flex items-center bg-white dark:bg-gray-700 px-3 py-1 rounded-full shadow-inner">
-                                <FiSearch className="text-gray-500 dark:text-gray-300" />
-                                <input
-                                    type="text"
-                                    placeholder="Search..."
-                                    className="bg-transparent outline-none px-2 text-sm dark:text-white"
-                                />
-                            </div> */}
-
                             {/* Dark Mode */}
                             <button
                                 onClick={toggleDarkMode}
@@ -245,7 +231,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                {/* Mobile Menu with Framer Motion */}
+                {/* Mobile Menu */}
                 <AnimatePresence>
                     {menuOpen && (
                         <motion.div
@@ -253,19 +239,29 @@ const Navbar = () => {
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
                             transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="fixed top-0 right-0 h-full w-full bg-white dark:bg-gray-900 shadow-lg p-6 z-50 lg:hidden"
+                            className="fixed top-0 right-0 h-full w-full bg-white dark:bg-gray-900 shadow-lg z-50 lg:hidden"
                         >
-                            <button
-                                onClick={() => setMenuOpen(false)}
-                                className="mb-10 text-gray-600 dark:text-gray-300 hover:text-red-500 transition-all"
-                            >
-                                Close ✖
-                            </button>
-                            <ul className="flex flex-col gap-6">{navlink}</ul>
-                            <div className="mt-8">
-                                <button className="btn btn-outline border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300 w-full">
-                                    Register
+                            {/* Close Button */}
+                            <div className="flex items-center justify-between mb-6">
+                                <h1 className="text-lg px-4 pt-3 md:text-2xl font-serif font-bold text-indigo-500 hover:scale-105 transition-all duration-300">
+                                    Studeon-institute
+                                </h1>
+                                <button
+                                    onClick={() => setMenuOpen(false)}
+                                    className="text-gray-700 hover:text-red-500 transition-all text-2xl font-bold mr-4"
+                                >
+                                    ✖
                                 </button>
+                            </div>
+
+                            <ul className="flex flex-col bg-white gap-6 p-6">{navlink}</ul>
+
+                            <div className="py-2 bg-white pb-16 rounded-b-box">
+                                <Link to='/signup'>
+                                    <button className="btn btn-outline flex w-60 mx-auto bg-white border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300">
+                                        Register
+                                    </button>
+                                </Link>
                             </div>
                         </motion.div>
                     )}

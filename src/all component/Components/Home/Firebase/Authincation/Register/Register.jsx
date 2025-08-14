@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Authmainprovider } from "../Authincation";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 const Register = () => {
     const [passwordMsg, setPasswordMsg] = useState("");
     const { createUser, googleAuth } = useContext(Authmainprovider);
+    const navigate =useNavigate()
 
     const handleRegister = e => {
         e.preventDefault();
@@ -40,6 +41,7 @@ const Register = () => {
                 console.log(result.user);
                 Swal.fire("Success!", "Successfully registered!", "success");
                 e.target.reset();
+                 navigate('/login')
             })
             .catch(error => {
                 console.error(error);

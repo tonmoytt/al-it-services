@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Authmainprovider } from "../Authincation/Authincation";
 import Swal from "sweetalert2";
@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 const Login = () => {
   const { signInUser,googleAuth } = useContext(Authmainprovider);
+  const navigate = useNavigate()
 
   const handleLogin = e => {
     e.preventDefault();
@@ -18,6 +19,7 @@ const Login = () => {
         console.log(result.user);
         Swal.fire("Success!", "Login Successful", "success");
         e.target.reset();
+         navigate('/')
       })
       .catch(error => {
         console.error(error);
@@ -29,6 +31,7 @@ const Login = () => {
         googleAuth()
             .then(result => {
                 console.log(result.user);
+                navigate('/')
             })
             .catch(error => {
                 console.error(error);
