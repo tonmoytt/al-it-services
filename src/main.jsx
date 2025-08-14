@@ -10,6 +10,7 @@ import Errorelement from './all component/Components/Home/Errorelement/Errorelem
 import Home from './all component/Components/Home/Home';
 import Register from './all component/Components/Home/Firebase/Authincation/Register/Register';
 import Authincation from './all component/Components/Home/Firebase/Authincation/Authincation';
+import Login from './all component/Components/Home/Firebase/Login/Login';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <Register></Register>
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
       },
     ]
 
