@@ -156,7 +156,7 @@ const Navbar = () => {
     return (
         <div className="sticky top-0 z-50">
             {/* Top banner */}
-            <div className="items-center bg-indigo-500">
+            <div className="items-center bg-[#3B82F6]">
                 <div className="max-w-7xl mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-center  text-white gap-3">
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
@@ -220,7 +220,7 @@ const Navbar = () => {
                                 <FiUser />
                             </button>
 
-                            <Link to="/register" className="hidden md:block">
+                            <Link to="/signup" className="hidden md:block">
                                 <button className="btn btn-outline border-green-500 text-green-500 hover:bg-green-500 hover:text-white md:text-lg lg:mr-4 transition-all duration-300">
                                     Register
                                 </button>
