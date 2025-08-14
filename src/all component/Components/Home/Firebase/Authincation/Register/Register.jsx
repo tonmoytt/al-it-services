@@ -161,7 +161,7 @@ const Register = () => {
                         <span className="block text-gray-500 mb-2 text-sm">Or register with</span>
                         <motion.button
                             onClick={handleGoogle}
-                            className="px-6 py-3 bg-red-500 text-white rounded-xl shadow-md hover:bg-red-600 hover:shadow-red-300 transition-all"
+                            className="px-6 py-3 bg-red-500 w-full text-white rounded-xl shadow-md hover:bg-red-600 hover:shadow-red-300 transition-all"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >

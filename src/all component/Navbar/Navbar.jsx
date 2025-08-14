@@ -109,29 +109,35 @@
 
 
 
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMoon, FiSun, FiUser, FiGift } from "react-icons/fi";
 import { FaHome, FaStore, FaInfoCircle, FaSignInAlt } from "react-icons/fa";
 import './navbar.css';
+import Authincation, { Authmainprovider } from "../Components/Home/Firebase/Authincation/Authincation";
+import auth from "../Components/Home/Firebase/Firebase.init";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
     const [darkMode, setDarkMode] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const { user, SingOutLog } = useContext(Authmainprovider)
+    const navigate = useNavigate()
 
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
         document.documentElement.classList.toggle("dark");
     };
 
-    const navlink = (
+    // navlink as a function to handle closing mobile menu
+    const navlink = (closeMenu) => (
         <>
             {[
                 { name: "Home", to: "/", icon: <FaHome className="inline-block mr-2" /> },
                 { name: "Store", to: "/store", icon: <FaStore className="inline-block mr-2" /> },
                 { name: "About", to: "/about", icon: <FaInfoCircle className="inline-block mr-2" /> },
-                { name: "Login", to: "/login", icon: <FaSignInAlt className="inline-block mr-2" /> }
+                !user && { name: "Login", to: "/login", icon: <FaSignInAlt className="inline-block mr-2" /> }
             ].map((item, idx) => (
                 <li
                     key={idx}
@@ -139,6 +145,7 @@ const Navbar = () => {
                 >
                     <NavLink
                         to={item.to}
+                        onClick={closeMenu} // Close menu on click
                         className={({ isActive }) =>
                             `flex items-center pb-1 ${isActive ? "text-blue-600 font-bold" : ""}`
                         }
@@ -150,6 +157,35 @@ const Navbar = () => {
             ))}
         </>
     );
+
+    // signout
+
+   const handleLogout = (onSuccess) => {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You will be logged out!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, logout!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            SingOutLog(auth)
+                .then(() => {
+                    Swal.fire('Success!', 'Successfully logged out!', 'success');
+                    if (onSuccess) onSuccess(); // close menu after logout
+                    navigate('/');
+                })
+                .catch((error) => {
+                    console.error(error);
+                    Swal.fire('Error!', 'Failed to log out!', 'error');
+                });
+        }
+    });
+};
+
 
     return (
         <div className="sticky top-0 z-50">
@@ -166,7 +202,6 @@ const Navbar = () => {
                         <span>Take one option, make life easy!</span>
                     </motion.div>
 
-                    {/* Enroll Now button */}
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         className="enroll-btn text-sm md:text-base relative"
@@ -189,7 +224,9 @@ const Navbar = () => {
                         </Link>
 
                         {/* Desktop Menu */}
-                        <ul className="hidden lg:flex gap-8 items-center">{navlink}</ul>
+                        <ul className="hidden lg:flex gap-8 items-center">
+                            {navlink(() => { })} {/* Desktop menu doesn't need to close */}
+                        </ul>
 
                         {/* Right Side */}
                         <div className="flex items-center gap-4">
@@ -254,15 +291,34 @@ const Navbar = () => {
                                 </button>
                             </div>
 
-                            <ul className="flex flex-col bg-white gap-6 p-6">{navlink}</ul>
+                            <ul className="flex flex-col bg-white gap-6 p-6">
+                                {navlink(() => setMenuOpen(false))} {/* Mobile menu closes on click */}
+                            </ul>
 
-                            <div className="py-2 bg-white pb-16 rounded-b-box">
-                                <Link to='/signup'>
-                                    <button className="btn btn-outline flex w-60 mx-auto bg-white border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300">
-                                        Register
-                                    </button>
-                                </Link>
-                            </div>
+                            {
+                                user ? <div className="py-2 bg-white pb-16 rounded-b-box">
+                                    <Link to='/signup'>
+                                      <button
+    onClick={() => {
+        handleLogout(() => setMenuOpen(false)); // pass a callback to close the menu after logout
+    }}
+    className="btn btn-outline flex w-60 mx-auto bg-white border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300"
+>
+    Logout
+</button>
+
+
+                                    </Link>
+                                </div> :
+                                    <div className="py-2 bg-white pb-16 rounded-b-box">
+                                        <Link to='/signup'>
+                                            <button onClick={() => setMenuOpen(false)} className="btn btn-outline flex w-60 mx-auto bg-white border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300">
+
+                                                Register
+                                            </button>
+                                        </Link>
+                                    </div>
+                            }
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -272,3 +328,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

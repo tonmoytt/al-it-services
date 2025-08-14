@@ -110,7 +110,7 @@ const Login = () => {
                         <span className="block text-gray-500 mb-2 text-sm">Or register with</span>
                         <motion.button
                             onClick={handleGoogle}
-                            className="px-4 py-2 bg-red-500 text-white rounded-md shadow-md hover:bg-red-600 hover:shadow-red-300 transition-all"
+                            className="px-4 py-2 bg-red-500 w-full text-white rounded-md shadow-md hover:bg-red-600 hover:shadow-red-300 transition-all"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
