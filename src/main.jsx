@@ -13,6 +13,7 @@ import Authincation from './all component/Components/Home/Firebase/Authincation/
 import Login from './all component/Components/Home/Firebase/Login/Login';
 import Anotherpageshow from './all component/Components/Home/AllHomes/Benner/Featured/Anotherpageshow/Anotherpageshow';
 import About from './all component/Navbar/About/About';
+import Store from './all component/Navbar/Store/Store';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
+      },
+      {
+        path: '/store',
+        element: <Store></Store>
       },
       {
         path: '/about',
