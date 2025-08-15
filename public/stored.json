@@ -1,0 +1,171 @@
+  [
+    {
+      "id": 86,
+      "title": "Real Estate Investment Strategies",
+      "img": "https://i.ibb.co/b1Bk71K/Real-Estate-Courses.jpg",
+      "description": "Learn real estate investment strategies. Discover how to invest in properties, generate passive income, and build wealth.",
+      "price": "119.99$",
+      "category": "Real Estate Courses"
+    },
+    {
+      "id": 92,
+      "title": "User Experience (UX) Design",
+      "img": "https://i.ibb.co/719GWfh/User-Experience-UX-Design22.jpg",
+      "description": "Master the art of User Experience (UX) design. Create intuitive, user-friendly digital interfaces.",
+      "price": "119.99$",
+      "category": "UI/UX Design Courses"
+    },
+    {
+      "id": 62,
+      "title": "Web Development Bootcamp",
+      "img": "https://i.ibb.co/j6SJmCK/Web-Development-Bootcamp333.jpg",
+      "description": "Start your journey in web development with our intensive bootcamp. Master HTML, CSS, and JavaScript to build dynamic websites.",
+      "price": "149.99$",
+      "category": "Web Development Courses"
+    },
+    {
+      "id": 63,
+      "title": "Digital Marketing Fundamentals",
+      "img": "https://i.ibb.co/HhtpbB7/Digital-Marketing-Fundamentals44.jpg",
+      "description": "Learn the fundamentals of digital marketing in this comprehensive course. Boost your online presence and drive results.",
+      "price": "79.99$",
+      "category": "Digital Marketing Courses"
+    },
+    {
+      "id": 64,
+      "title": "Data Science Essentials",
+      "img": "https://i.ibb.co/BKhyM7L/Data-Science-Essentials55.jpg",
+      "description": "Explore the essentials of data science and analytics. Analyze data, make data-driven decisions, and master data visualization.",
+      "price": "129.99$",
+      "category": "Data Science Courses"
+    },
+    {
+      "id": 65,
+      "title": "Graphic Design Fundamentals",
+      "img": "https://i.ibb.co/hgQ2rmf/Graphic-Design-Fundamentals66.jpg",
+      "description": "Unleash your creativity with our graphic design fundamentals course. Learn to create stunning visuals and designs.",
+      "price": "99.99$",
+      "category": "Graphic Design Courses"
+    },
+    {
+      "id": 66,
+      "title": "Photography for Beginners",
+      "img": "https://i.ibb.co/fHyXGT0/Photography-for-Beginners77.jpg",
+      "description": "Start your photography journey with our beginners' course. Master camera settings, composition, and photo editing.",
+      "price": "69.99$",
+      "category": "Photography Courses"
+    },
+    {
+      "id": 67,
+      "title": "Financial Planning and Investing",
+      "img": "https://i.ibb.co/M75x73S/Financial-Planning-and-Investing88.jpg",
+      "description": "Learn the art of financial planning and investing. Grow your wealth, manage your finances, and secure your future.",
+      "price": "119.99$",
+      "category": "Finance Courses"
+    },
+    {
+      "id": 68,
+      "title": "Artificial Intelligence Masterclass",
+      "img": "https://i.ibb.co/GHZmJgP/Artificial-Intelligence-Masterclass99.jpg",
+      "description": "Dive into the world of artificial intelligence with our masterclass. Understand AI concepts and explore real-world applications.",
+      "price": "149.99$",
+      "category": "AI and Machine Learning Courses"
+    },
+    {
+      "id": 69,
+      "title": "Cooking and Culinary Arts",
+      "img": "https://i.ibb.co/7R5xC0R/Cooking-and-Culinary-Arts10.jpg",
+      "description": "Become a culinary expert with our cooking and culinary arts course. Master cooking techniques and create gourmet dishes.",
+      "price": "79.99$",
+      "category": "Culinary Courses"
+    },
+    {
+      "id": 70,
+      "title": "Digital Illustration Workshop",
+      "img": "https://i.ibb.co/chzmRGG/Digital-Illustration-Workshop11.jpg",
+      "description": "Unlock your digital illustration skills with our workshop. Create captivating digital artworks and illustrations.",
+      "price": "69.99$",
+      "category": "Art and Design Courses"
+    },
+    {
+      "id": 71,
+      "title": "Business Management Essentials",
+      "img": "https://i.ibb.co/ChPxY99/Business-Management-Essentials12.jpg",
+      "description": "Master the essentials of business management. Learn leadership, strategy, and decision-making skills.",
+      "price": "119.99$",
+      "category": "Business and Management Courses"
+    },
+    {
+      "id": 72,
+      "title": "Fitness and Nutrition Program",
+      "img": "https://i.ibb.co/bLfmkHj/Fitness-and-Nutrition-Program13.jpg",
+      "description": "Achieve your fitness goals with our fitness and nutrition program. Get in shape, boost your energy, and live a healthy life.",
+      "price": "69.99$",
+      "category": "Fitness and Nutrition Courses"
+    },
+    {
+      "id": 73,
+      "title": "Music Production Masterclass",
+      "img": "https://i.ibb.co/Lrt5qTk/Music-Production-Masterclass14.jpg",
+      "description": "Become a music producer with our masterclass. Learn music composition, recording, and production techniques.",
+      "price": "129.99$",
+      "category": "Music and Audio Courses"
+    },
+    {
+      "id": 74,
+      "title": "Language Learning Adventure",
+      "img": "https://i.ibb.co/RvhXdC9/Language-Learning-Adventure15.jpg",
+      "description": "Embark on a language learning adventure. Learn a new language, explore cultures, and connect with people worldwide.",
+      "price": "89.99$",
+      "category": "Language and Communication Courses"
+    },
+    {
+      "id": 75,
+      "title": "Entrepreneurship and Startups",
+      "img": "https://i.ibb.co/5nf0h3Q/Entrepreneurship-and-Startups17.jpg",
+      "description": "Start your entrepreneurial journey with our course. Learn to launch a startup, raise funds, and scale your business.",
+      "price": "149.99$",
+      "category": "Entrepreneurship Courses"
+    },
+    {
+      "id": 76,
+      "title": "Environmental Sustainability",
+      "img": "https://i.ibb.co/xDQHNkz/Environmental-Sustainability177.jpg",
+      "description": "Explore environmental sustainability in this course. Learn about conservation, eco-friendly practices, and sustainable living.",
+      "price":" 79.99$",
+      "category": "Sustainability and Environmental Courses"
+    },
+    {
+      "id": 77,
+      "title": "Film Production Workshop",
+      "img": "https://i.ibb.co/b3SDT31/Film-Production-Workshop18.jpg",
+      "description": "Discover the world of film production in our workshop. Learn filmmaking, cinematography, and editing techniques.",
+      "price": "129.99$",
+      "category": "Film and Video Production Courses"
+    },
+    {
+      "id": 78,
+      "title": "Cybersecurity Essentials",
+      "img": "https://i.ibb.co/4ZFcHkX/Cybersecurity-Essentials19.jpg",
+      "description": "Protect against cyber threats with our cybersecurity essentials course. Learn to secure data and systems.",
+      "price": "99.99$",
+      "category": "Cybersecurity Courses"
+    },
+    {
+      "id": 79,
+      "title": "Interior Design Masterclass",
+      "img": "https://i.ibb.co/zs75909/Interior-Design-Masterclass20.jpg",
+      "description": "Become an interior design expert with our masterclass. Transform spaces and create stunning interiors.",
+      "price": "119.99$",
+      "category": "Interior Design Courses"
+    },
+    {
+      "id": 80,
+      "title": "History and Civilization",
+      "img": "https://i.ibb.co/RHSv7hB/History-and-Civilization21.jpg",
+      "description": "Explore the history of civilizations in this course. Dive into ancient cultures, events, and historical figures.",
+      "price":" 69.99$",
+      "category": "History and Civilization Courses"
+    }
+  ]
+

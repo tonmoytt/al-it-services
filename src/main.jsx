@@ -11,6 +11,7 @@ import Home from './all component/Components/Home/Home';
 import Register from './all component/Components/Home/Firebase/Authincation/Register/Register';
 import Authincation from './all component/Components/Home/Firebase/Authincation/Authincation';
 import Login from './all component/Components/Home/Firebase/Login/Login';
+import Anotherpageshow from './all component/Components/Home/AllHomes/Benner/Featured/Anotherpageshow/Anotherpageshow';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: () => fetch('/stored.json'),
       },
       {
         path: '/signup',
@@ -29,6 +31,11 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
+      },
+      {
+        path:'/feature/:id',
+        element:<Anotherpageshow></Anotherpageshow>,
+        loader: () => fetch('/stored.json'),
       },
     ]
 

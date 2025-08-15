@@ -1,0 +1,36 @@
+ [
+      {
+        "id": 56,
+        "title": "Public Speaking Workshop",
+        "img": "https://i.ibb.co/XD0k3Vj/Workshops-and-Webinars.png",
+        "description": "Enhance your public speaking skills with our interactive workshop. Build confidence and captivate your audience.",
+        "price": "69.99$",
+        "category": "Workshops and Webinars"
+      },
+      {
+        "id": 57,
+        "title": "Finance and Banking Career Fair",
+        "img": "https://i.ibb.co/685t8Bj/download.jpg",
+        "description": "Explore career opportunities in finance and banking at our career fair. Connect with leading financial institutions.",
+        "price": "278$",
+        "category": "Career Fairs"
+      },
+      {
+        "id": 58,
+        "title": "Science and Technology Conference",
+        "img": "https://i.ibb.co/4gWdvCG/Educational-Conferences.jpg",
+        "description": "Join scientists and technologists at our annual conference. Discuss the latest advancements and innovations.",
+        "price": "149.99$",
+        "category": "Educational Conferences"
+      },
+      {
+        "id": 59,
+        "title": "Software Development Training Program",
+        "img": "https://i.ibb.co/CQ1FDmg/Training-Programs.jpg",
+        "description": "Master software development with our intensive training program. Code, test, and deploy your own applications.",
+        "price": "399.99$",
+        "category": "Training Programs"
+      }
+    ]
+  
+  
