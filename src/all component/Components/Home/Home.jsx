@@ -4,6 +4,7 @@ import Featured from './AllHomes/Benner/Featured/Featured';
 import Marque from './AllHomes/Marquee/Marquee';
 import CourseShow from './AllHomes/CourseShow/CourseShow';
 import Courseregistetion from './AllHomes/Courseregistetion/Courseregistetion';
+import Slider from './AllHomes/Slider/Slider';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
            <Featured></Featured>
            <Marque></Marque>
            <Courseregistetion></Courseregistetion>
+           <Slider></Slider>
             
              
         </div>
