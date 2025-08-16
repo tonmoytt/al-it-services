@@ -74,10 +74,10 @@ const Footer = () => {
             {/* Bottom Section */}
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-6 lg:px-0 gap-4 md:gap-0">
                 <p className="text-gray-400 text-sm md:text-base text-center md:text-left">
-                    © 2023 All rights reserved by STUDEON-INSTITUTE
+                    © 2025 All rights reserved by STUDEON-INSTITUTE
                 </p>
                 <p className="text-gray-400 text-sm md:text-base text-center md:text-right">
-                    Designed with ❤️ by STUDEON Team
+                    Designed with ❤️ by Tonmoy $ STUDEON Team
                 </p>
             </div>
 

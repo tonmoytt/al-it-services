@@ -36,16 +36,23 @@ const Register = () => {
             return;
         }
 
-        createUser(email, password)
-            .then(result => {
-                console.log(result.user);
-                Swal.fire("Success!", "Successfully registered!", "success");
-                e.target.reset();
-                 navigate('/login')
-            })
-            .catch(error => {
-                console.error(error);
-            });
+      createUser(email, password)
+    .then(result => {
+        console.log(result.user);
+        Swal.fire("Success!", "Successfully registered!", "success");
+        e.target.reset();
+        navigate('/login');
+    })
+    .catch(error => {
+        console.error(error);
+        // Firebase auth এর error code check
+        if (error.code === "auth/email-already-in-use") {
+            Swal.fire("Oops!", "This email is already registered!", "error");
+        } else {
+            Swal.fire("Error!", error.message, "error");
+        }
+    });
+
     };
 
     const handleGoogle = () => {
