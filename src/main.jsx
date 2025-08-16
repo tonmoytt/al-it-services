@@ -14,6 +14,8 @@ import Login from './all component/Components/Home/Firebase/Login/Login';
 import Anotherpageshow from './all component/Components/Home/AllHomes/Benner/Featured/Anotherpageshow/Anotherpageshow';
 import About from './all component/Navbar/About/About';
 import Store from './all component/Navbar/Store/Store';
+import Challange from './all component/Navbar/Challange/Challange';
+import LearningFlow from './all component/Navbar/LearningFlow/LearningFlow';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
       {
         path: '/store',
         element: <Store></Store>
+      },
+      {
+        path: '/challange',
+        element: <Challange></Challange>
+      },
+      {
+        path: '/learning-flow',
+        element: <LearningFlow></LearningFlow>
       },
       {
         path: '/about',

@@ -108,84 +108,124 @@
 
 
 
-
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMoon, FiSun, FiUser, FiGift } from "react-icons/fi";
-import { FaHome, FaStore, FaInfoCircle, FaSignInAlt } from "react-icons/fa";
-import './navbar.css';
-import Authincation, { Authmainprovider } from "../Components/Home/Firebase/Authincation/Authincation";
+import {
+    FaHome,
+    FaStore,
+    FaInfoCircle,
+    FaSignInAlt,
+    FaBook,
+    FaTasks,
+} from "react-icons/fa";
+import "./navbar.css";
+import Authincation, {
+    Authmainprovider,
+} from "../Components/Home/Firebase/Authincation/Authincation";
 import auth from "../Components/Home/Firebase/Firebase.init";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
     const [darkMode, setDarkMode] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const { user, SingOutLog } = useContext(Authmainprovider)
-    const navigate = useNavigate()
+    const { user, SingOutLog } = useContext(Authmainprovider);
+    const navigate = useNavigate();
 
     const toggleDarkMode = () => {
         setDarkMode(!darkMode);
         document.documentElement.classList.toggle("dark");
     };
 
-    // navlink as a function to handle closing mobile menu
-    const navlink = (closeMenu) => (
-        <>
-            {[
-                { name: "Home", to: "/", icon: <FaHome className="inline-block mr-2" /> },
-                { name: "Store", to: "/store", icon: <FaStore className="inline-block mr-2" /> },
-                { name: "About", to: "/about", icon: <FaInfoCircle className="inline-block mr-2" /> },
-                !user && { name: "Login", to: "/login", icon: <FaSignInAlt className="inline-block mr-2" /> }
-            ].map((item, idx) => (
-                <li
-                    key={idx}
-                    className="relative group font-semibold text-lg lg:text-xl transition-all duration-300"
-                >
-                    <NavLink
-                        to={item.to}
-                        onClick={closeMenu} // Close menu on click
-                        className={({ isActive }) =>
-                            `flex items-center pb-1 ${isActive ? "text-blue-600 font-bold" : ""}`
-                        }
+    // navlink with icon + conditional items 
+    const navlink = (closeMenu) => {
+        const links = [
+            { name: "Home", to: "/", icon: <FaHome className="mr-1 md:mr-0 text-base md:text-sm  text-indigo-500" /> },
+            { name: "Course", to: "/store", icon: <FaStore className="mr-1 md:mr-0 text-sm  text-green-500" /> },
+            { name: "About", to: "/about", icon: <FaInfoCircle className="mr-1 md:mr-0 text-sm  text-orange-500" /> },
+            !user && {
+                name: "Login",
+                to: "/login",
+                icon: <FaSignInAlt className="mr-1 md:mr-0 text-sm  text-blue-500" />,
+            },
+            user && {
+                name: " Challenge ",
+                to: "/challange",
+                icon: <FaTasks
+                    className="mr-1 md:mr-0 text-sm  text-red-500 hover:text-green-500 cursor-pointer"
+                    tooltip="Daily tasks & coding practice"
+                />,
+
+                //   description: "Daily tasks & coding practice",
+            },
+            user && {
+                name: " Learning Flow",
+                to: "/learning-flow",
+                icon: <FaBook className="mr-1 md:mr-0 text-sm  text-purple-500" />,
+                // description: "Step-by-step roadmap to grow skills",
+            },
+        ].filter(Boolean);
+
+        return (
+            <>
+                {links.map((item, idx) => (
+                    <li
+                        key={idx}
+                        className="relative group font-semibold text-lg lg:text-md transition-all duration-300"
                     >
-                        {item.icon} {item.name}
-                        <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-                    </NavLink>
-                </li>
-            ))}
-        </>
-    );
-
-    // signout
-
-   const handleLogout = (onSuccess) => {
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You will be logged out!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, logout!',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            SingOutLog(auth)
-                .then(() => {
-                    Swal.fire('Success!', 'Successfully logged out!', 'success');
-                    if (onSuccess) onSuccess(); // close menu after logout
-                    navigate('/');
-                })
-                .catch((error) => {
-                    console.error(error);
-                    Swal.fire('Error!', 'Failed to log out!', 'error');
-                });
-        }
-    });
-};
-
+                        <NavLink
+                            to={item.to}
+                            onClick={closeMenu}
+                            className={({ isActive }) =>
+                                `flex flex-col md:flex-row md:items-center md:gap-2 pb-1 ${isActive
+                                    ? "text-blue-600 font-bold"
+                                    : "text-gray-700 hover:text-blue-600"
+                                }`
+                            }
+                        >
+                            <div className="flex items-center gap-2">
+                                {item.icon}
+                                {item.name}
+                            </div>
+                            {item.description && (
+                                <span className="text-xs md:text-sm text-gray-500 md:ml-6">
+                                    {item.description}
+                                </span>
+                            )}
+                            <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                        </NavLink>
+                    </li>
+                ))}
+            </>
+        );
+    };
+    // Logout
+    const handleLogout = (onSuccess) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will be logged out!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, logout!",
+            cancelButtonText: "Cancel",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                SingOutLog(auth)
+                    .then(() => {
+                        Swal.fire("Success!", "Successfully logged out!", "success");
+                        if (onSuccess) onSuccess();
+                        navigate("/");
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        Swal.fire("Error!", "Failed to log out!", "error");
+                    });
+            }
+        });
+    };
 
     return (
         <div className="sticky top-0 z-50">
@@ -225,7 +265,7 @@ const Navbar = () => {
 
                         {/* Desktop Menu */}
                         <ul className="hidden lg:flex gap-8 items-center">
-                            {navlink(() => { })} {/* Desktop menu doesn't need to close */}
+                            {navlink(() => { })}
                         </ul>
 
                         {/* Right Side */}
@@ -243,11 +283,20 @@ const Navbar = () => {
                                 <FiUser />
                             </button>
 
-                            <Link to="/signup" className="hidden md:block">
-                                <button className="btn btn-outline border-green-500 text-green-500 hover:bg-green-500 hover:text-white md:text-lg lg:mr-4 transition-all duration-300">
-                                    Register
-                                </button>
-                            </Link>
+                            {user ?
+                                <Link to="/" className="hidden md:block">
+                                    <button onClick={() => {
+                                            handleLogout(() => setMenuOpen(false));
+                                        }} className="btn btn-outline border-green-500 text-green-500 hover:bg-green-500 hover:text-white md:text-lg lg:mr-4 transition-all duration-300">
+                                        Logout
+                                    </button>
+                                </Link> :
+                                <Link to="/signup" className="hidden md:block">
+                                    <button className="btn btn-outline border-green-500 text-green-500 hover:bg-green-500 hover:text-white md:text-lg lg:mr-4 transition-all duration-300">
+                                        Register
+                                    </button>
+                                </Link>
+                            }
 
                             {/* Mobile menu button */}
                             <button
@@ -261,7 +310,12 @@ const Navbar = () => {
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
                                 >
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M4 6h16M4 12h8m-8 6h16"
+                                    />
                                 </svg>
                             </button>
                         </div>
@@ -292,33 +346,32 @@ const Navbar = () => {
                             </div>
 
                             <ul className="flex flex-col bg-white gap-6 p-6">
-                                {navlink(() => setMenuOpen(false))} {/* Mobile menu closes on click */}
+                                {navlink(() => setMenuOpen(false))}
                             </ul>
 
-                            {
-                                user ? <div className="py-2 bg-white pb-16 rounded-b-box">
-                                    <Link to='/signup'>
-                                      <button
-    onClick={() => {
-        handleLogout(() => setMenuOpen(false)); // pass a callback to close the menu after logout
-    }}
-    className="btn btn-outline flex w-60 mx-auto bg-white border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300"
->
-    Logout
-</button>
-
-
+                            {user ? (
+                                <div className="py-2 bg-white pb-16 rounded-b-box">
+                                    <button
+                                        onClick={() => {
+                                            handleLogout(() => setMenuOpen(false));
+                                        }}
+                                        className="btn btn-outline flex w-60 mx-auto bg-white border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300"
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="py-2 bg-white pb-16 rounded-b-box">
+                                    <Link to="/signup">
+                                        <button
+                                            onClick={() => setMenuOpen(false)}
+                                            className="btn btn-outline flex w-60 mx-auto bg-white border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300"
+                                        >
+                                            Register
+                                        </button>
                                     </Link>
-                                </div> :
-                                    <div className="py-2 bg-white pb-16 rounded-b-box">
-                                        <Link to='/signup'>
-                                            <button onClick={() => setMenuOpen(false)} className="btn btn-outline flex w-60 mx-auto bg-white border-green-500 text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300">
-
-                                                Register
-                                            </button>
-                                        </Link>
-                                    </div>
-                            }
+                                </div>
+                            )}
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -328,4 +381,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
