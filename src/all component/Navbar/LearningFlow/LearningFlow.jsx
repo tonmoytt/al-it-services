@@ -46,30 +46,29 @@ const LearningFlow = () => {
   return (
     <div className="relative w-full min-h-screen bg-gradient-to-b from-indigo-50 via-purple-50 to-pink-50 text-gray-800 overflow-hidden ">
       {/* bg */}
-      <div className="w-full relative mb-1 md:mb-16 bg-orange-100">
-       
-
-        <Swiper
-          modules={[Autoplay, Pagination, EffectFade]}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          loop={true}
-          effect="fade"
-          pagination={{ clickable: true }}
-          className="hero min-h-[60vh] md:h-[330px] relative"
+     <div className="relative mb-1 md:mb-16 w-full">
+  <Swiper
+    modules={[Autoplay, Pagination, EffectFade]}
+    autoplay={{ delay: 4000, disableOnInteraction: false }}
+    loop={true}
+    effect="fade"
+    pagination={{ clickable: true }}
+    className="relative w-full"
+  >
+    {bgImages.map((bg, index) => (
+      <SwiperSlide key={index}>
+        <div
+          className="w-full h-[250px] sm:h-[300px] md:h-[330px] lg:h-[400px] bg-cover bg-center relative"
+          style={{ backgroundImage: `url(${bg})` }}
         >
-          {bgImages.map((bg, index) => (
-            <SwiperSlide key={index}>
-              <div
-                className="h-full w-full bg-cover bg-center relative"
-                style={{ backgroundImage: `url(${bg})` }}
-              >
-                {/* gradient overlay for better visibility */}
-                <div className="absolute  bg-black/40"></div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+          {/* gradient overlay */}
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
+
 
      
      

@@ -23,39 +23,38 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 const Challange = () => {
 
-   const bgImages = [
+  const bgImages = [
     "https://i.ibb.co.com/VWgtj6gz/bgstudy.jpg",
-    
+
     "https://i.ibb.co.com/mrCVNy8F/learning-flow-bg.png",
   ];
   return (
     <div className="relative w-full min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 text-gray-800 overflow-hidden">
-    
-    {/* bg */}
-    <div className="relative mb-1 md:mb-16 bg-orange-100">
-        
 
+      {/* bg */}
+      <div className="relative mb-1 md:mb-16 w-full">
         <Swiper
           modules={[Autoplay, Pagination, EffectFade]}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
           loop={true}
           effect="fade"
           pagination={{ clickable: true }}
-          className="hero min-h-[60vh] md:h-[330px] relative"
+          className="relative w-full"
         >
           {bgImages.map((bg, index) => (
             <SwiperSlide key={index}>
               <div
-                className="h-full w-full bg-cover bg-center relative"
+                className="w-full h-[250px] sm:h-[300px] md:h-[330px] lg:h-[400px] bg-cover bg-center relative"
                 style={{ backgroundImage: `url(${bg})` }}
               >
-                {/* gradient overlay for better visibility */}
-                <div className="absolute  bg-black/40"></div>
+                {/* gradient overlay */}
+                <div className="absolute inset-0 bg-black/40"></div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
+
 
 
 
@@ -310,58 +309,58 @@ const Challange = () => {
         </section>
 
         {/* Highlight Section */}
-     <section className="relative px-6 md:px-20 py-24 bg-gradient-to-r from-purple-700 via-indigo-600 to-blue-600 text-white text-center rounded-3xl mx-4 md:mx-20 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] mb-24 overflow-hidden">
-      {/* Background Glow Effect */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
-      <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-500 rounded-full blur-3xl opacity-40"></div>
-      <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-blue-500 rounded-full blur-3xl opacity-40"></div>
+        <section className="relative px-6 md:px-20 py-24 bg-gradient-to-r from-purple-700 via-indigo-600 to-blue-600 text-white text-center rounded-3xl mx-4 md:mx-20 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] mb-24 overflow-hidden">
+          {/* Background Glow Effect */}
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+          <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-500 rounded-full blur-3xl opacity-40"></div>
+          <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-blue-500 rounded-full blur-3xl opacity-40"></div>
 
-      {/* Title */}
-      <motion.h2
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 text-4xl md:text-5xl font-extrabold drop-shadow-lg"
-      >
-        💡 Why Join <span className="text-yellow-300">Challenges?</span>
-      </motion.h2>
-
-      {/* Subtitle */}
-      <motion.p
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.8 }}
-        className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-200 opacity-95 leading-relaxed"
-      >
-        Because learning is fun when it feels like a game! <br />
-        Build <span className="text-yellow-300 font-semibold">consistency</span>, 
-        strengthen <span className="text-pink-300 font-semibold">problem-solving</span>, 
-        and unlock <span className="text-green-300 font-semibold">achievements</span> while 
-        growing step by step 🚀.
-      </motion.p>
-
-      {/* Feature Cards */}
-      <div className="mt-14 grid md:grid-cols-4 gap-8 relative z-10">
-        {[
-          { icon: <FaLightbulb size={40} />, title: "Creative Thinking", desc: "Sharpen your problem-solving & innovative mindset." },
-          { icon: <FaMedal size={40} />, title: "Earn Rewards", desc: "Unlock badges, certificates, & recognition." },
-          { icon: <FaRocket size={40} />, title: "Fast Growth", desc: "Boost your skills rapidly with daily practice." },
-          { icon: <FaUsers size={40} />, title: "Community", desc: "Join a network of learners & share progress." },
-        ].map((item, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 50 }}
+          {/* Title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.2, duration: 0.7 }}
-            className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 hover:scale-105 transition-transform shadow-lg border border-white/20"
+            transition={{ duration: 0.8 }}
+            className="relative z-10 text-4xl md:text-5xl font-extrabold drop-shadow-lg"
           >
-            <div className="flex justify-center text-yellow-300 mb-4">{item.icon}</div>
-            <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-            <p className="text-sm opacity-80">{item.desc}</p>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+            💡 Why Join <span className="text-yellow-300">Challenges?</span>
+          </motion.h2>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-200 opacity-95 leading-relaxed"
+          >
+            Because learning is fun when it feels like a game! <br />
+            Build <span className="text-yellow-300 font-semibold">consistency</span>,
+            strengthen <span className="text-pink-300 font-semibold">problem-solving</span>,
+            and unlock <span className="text-green-300 font-semibold">achievements</span> while
+            growing step by step 🚀.
+          </motion.p>
+
+          {/* Feature Cards */}
+          <div className="mt-14 grid md:grid-cols-4 gap-8 relative z-10">
+            {[
+              { icon: <FaLightbulb size={40} />, title: "Creative Thinking", desc: "Sharpen your problem-solving & innovative mindset." },
+              { icon: <FaMedal size={40} />, title: "Earn Rewards", desc: "Unlock badges, certificates, & recognition." },
+              { icon: <FaRocket size={40} />, title: "Fast Growth", desc: "Boost your skills rapidly with daily practice." },
+              { icon: <FaUsers size={40} />, title: "Community", desc: "Join a network of learners & share progress." },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.2, duration: 0.7 }}
+                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 hover:scale-105 transition-transform shadow-lg border border-white/20"
+              >
+                <div className="flex justify-center text-yellow-300 mb-4">{item.icon}</div>
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm opacity-80">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

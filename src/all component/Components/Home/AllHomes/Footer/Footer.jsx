@@ -27,10 +27,10 @@ const Footer = () => {
                 {/* Quick Links */}
                 <div className="space-y-4">
                     <h3 className="text-xl font-bold text-emerald-400">Quick Links</h3>
-                    <ul className="space-y-2">
+                    <ul className="flex md:grid  space-x-2 md:space-y-2 underline">
                         <li><Link to="/" className="hover:text-purple-400 transition-colors">Home</Link></li>
                         <li><Link to="/courses" className="hover:text-purple-400 transition-colors">Courses</Link></li>
-                        <li><Link to="/about" className="hover:text-purple-400 transition-colors">About Us</Link></li>
+                        <li><Link to="/about" className="hover:text-purple-400 transition-colors">About </Link></li>
                         <li><Link to="/contact" className="hover:text-purple-400 transition-colors">Contact</Link></li>
                         <li><Link to="/faq" className="hover:text-purple-400 transition-colors">FAQ</Link></li>
                     </ul>
@@ -39,12 +39,18 @@ const Footer = () => {
                 {/* Services / Categories */}
                 <div className="space-y-4">
                     <h3 className="text-xl font-bold text-emerald-400">Services</h3>
-                    <ul className="space-y-2">
-                        <li><Link to="/services#webdev" className="hover:text-purple-400 transition-colors">Web Development</Link></li>
-                        <li><Link to="/services#datasci" className="hover:text-purple-400 transition-colors">Data Science</Link></li>
-                        <li><Link to="/services#design" className="hover:text-purple-400 transition-colors">UI/UX Design</Link></li>
-                        <li><Link to="/services#marketing" className="hover:text-purple-400 transition-colors">Digital Marketing</Link></li>
-                        <li><Link to="/services#ai" className="hover:text-purple-400 transition-colors">AI & ML</Link></li>
+                    <ul className="space-y-2 ">
+                        <div className="flex md:grid justify-between ">
+                            <li><Link to="/services#webdev" className="hover:text-purple-400 hover:underline transition-colors">Web Development</Link></li>
+                            <li><Link to="/services#datasci" className="hover:text-purple-400 transition-colors">Data Science</Link></li>
+                        </div>
+
+                        <div className="flex md:grid justify-between  ">
+                            <li><Link to="/services#design" className="hover:text-purple-400 transition-colors">UI/UX Design</Link></li>
+                            <li><Link to="/services#marketing" className="hover:text-purple-400 transition-colors">Digital Marketing</Link></li>
+                        </div>
+
+                        <li><Link to="/services#ai" className="hover:text-purple-400 transition-colors hidden md:block">AI & ML</Link></li>
                     </ul>
                 </div>
 
