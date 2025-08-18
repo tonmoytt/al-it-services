@@ -3,182 +3,175 @@ import { Link, useNavigate } from "react-router-dom";
 import { Authmainprovider } from "../Authincation";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
+import { FaGraduationCap, FaUsers, FaRocket } from "react-icons/fa";
 
 const Register = () => {
-    const [passwordMsg, setPasswordMsg] = useState("");
-    const { createUser, googleAuth } = useContext(Authmainprovider);
-    const navigate =useNavigate()
+  const [passwordMsg, setPasswordMsg] = useState("");
+  const { createUser, googleAuth } = useContext(Authmainprovider);
+  const navigate = useNavigate();
 
-    const handleRegister = e => {
-        e.preventDefault();
-        const form = new FormData(e.currentTarget);
-        const name = form.get("name");
-        // const photo = form.get("photo");
-        const email = form.get("email");
-        const password = form.get("password");
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const name = form.get("name");
+    const email = form.get("email");
+    const password = form.get("password");
 
-        setPasswordMsg("");
+    setPasswordMsg("");
 
-        if (password.length < 6) {
-            setPasswordMsg("Password should be at least 6 characters");
-            return;
-        }
-        if (!/[0-9]/.test(password)) {
-            setPasswordMsg("Please include at least one number");
-            return;
-        }
-        if (!/[A-Z]/.test(password)) {
-            setPasswordMsg("Please include at least one uppercase letter");
-            return;
-        }
-        if (!/(?=.*[!@#$%^&*])/.test(password)) {
-            setPasswordMsg("Please include at least one special character");
-            return;
-        }
+    if (password.length < 6) {
+      setPasswordMsg("Password should be at least 6 characters");
+      return;
+    }
+    if (!/[0-9]/.test(password)) {
+      setPasswordMsg("Please include at least one number");
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      setPasswordMsg("Please include at least one uppercase letter");
+      return;
+    }
+    if (!/(?=.*[!@#$%^&*])/.test(password)) {
+      setPasswordMsg("Please include at least one special character");
+      return;
+    }
 
-      createUser(email, password)
-    .then(result => {
-        console.log(result.user);
+    createUser(email, password)
+      .then(() => {
         Swal.fire("Success!", "Successfully registered!", "success");
         e.target.reset();
-        navigate('/login');
-    })
-    .catch(error => {
-        console.error(error);
-        // Firebase auth এর error code check
+        navigate("/login");
+      })
+      .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
-            Swal.fire("Oops!", "This email is already registered!", "error");
+          Swal.fire("Oops!", "This email is already registered!", "error");
         } else {
-            Swal.fire("Error!", error.message, "error");
+          Swal.fire("Error!", error.message, "error");
         }
-    });
+      });
+  };
 
-    };
+  const handleGoogle = () => {
+    googleAuth()
+      .then(() => navigate("/"))
+      .catch((error) => console.error(error));
+  };
 
-    const handleGoogle = () => {
-        googleAuth()
-            .then(result => {
-                console.log(result.user);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    };
+  return (
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center px-4"
+      style={{
+        backgroundImage:
+          "url('https://i.ibb.co.com/qL6r4y6L/wallpaperflare-com-wallpaper-1.jpg')",
+      }}
+    >
+      <div className="relative z-10 w-full max-w-6xl rounded-3xl shadow-2xl grid md:grid-cols-2 overflow-hidden backdrop-blur-md bg-gradient-to-br from-green-400/80 via-emerald-500/70 to-green-700/80 border border-white/20">
+        {/* ---------- Left Info Section ---------- */}
+        <motion.div
+          className="hidden md:flex flex-col justify-center p-12 text-white space-y-6 bg-gradient-to-b from-black/40 via-black/30 to-black/50"
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-5xl font-extrabold leading-tight">
+            Join <span className="text-green-300">Learn & Earn</span> Today 🚀
+          </h1>
+          <p className="text-gray-200 text-lg">
+            Build your future with world-class courses, expert guidance, and a
+            community of learners who help you succeed.
+          </p>
 
-    return (
-        <div className="bg-gradient-to-br from-green-200 via-emerald-200 to-green-300 md:min-h-screen flex items-center justify-center p-4">
-            <motion.div
-                className="w-full max-w-md"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+          <div className="space-y-5">
+            <div className="flex items-center gap-3">
+              <FaGraduationCap className="text-green-300 text-3xl" />
+              <span className="font-semibold text-lg">Expert Mentors & Instructors</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <FaUsers className="text-green-300 text-3xl" />
+              <span className="font-semibold text-lg">Collaborative Community</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <FaRocket className="text-green-300 text-3xl" />
+              <span className="font-semibold text-lg">Boost Your Career Growth</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ---------- Right Form Section ---------- */}
+        <motion.div
+          className="p-10 md:p-14 flex flex-col justify-center bg-white/90 backdrop-blur-lg"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold text-center text-green-600 mb-8 drop-shadow-lg">
+            Register Now!
+          </h2>
+          <form onSubmit={handleRegister} className="space-y-6">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-green-500 outline-none transition-all"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-green-500 outline-none transition-all"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-green-500 outline-none transition-all"
+              required
+            />
+            {passwordMsg && (
+              <p className="text-red-500 text-sm font-medium">{passwordMsg}</p>
+            )}
+
+            <motion.button
+              type="submit"
+              className="w-full bg-gradient-to-r from-green-500 via-emerald-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white py-3 rounded-xl font-bold shadow-xl transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
             >
-                <motion.div
-                    className="bg-white shadow-2xl rounded-3xl p-8 border-4 border-transparent hover:border-green-400 transition-all duration-300 hover:shadow-green-200"
-                    whileHover={{ scale: 1.02 }}
-                >
-                    <h1 className="text-3xl md:text-4xl font-extrabold text-center text-green-600 mb-6">
-                        Register Now!
-                    </h1>
-                    <form onSubmit={handleRegister} className="space-y-5">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.1 }}
-                        >
-                            <label className="block mb-1 font-semibold">Your Name</label>
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Name"
-                                className="input input-bordered w-full border-2 border-gray-300 rounded-xl focus:border-green-500 transition-all"
-                                required
-                            />
-                        </motion.div>
+              Submit
+            </motion.button>
+          </form>
 
-                        {/* <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.2 }}
-                        >
-                            <label className="block mb-1 font-semibold">Photo URL</label>
-                            <input
-                                type="text"
-                                name="photo"
-                                placeholder="Photo URL"
-                                className="input input-bordered w-full border-2 border-gray-300 rounded-xl focus:border-green-500 transition-all"
-                                required
-                            />
-                        </motion.div> */}
+          <div className="mt-8 text-center">
+            <p className="text-gray-700 text-sm">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-green-600 font-bold hover:underline"
+              >
+                Login
+              </Link>
+            </p>
+          </div>
 
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.3 }}
-                        >
-                            <label className="block mb-1 font-semibold">Email</label>
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Email"
-                                className="input input-bordered w-full border-2 border-gray-300 rounded-xl focus:border-green-500 transition-all"
-                                required
-                            />
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.4 }}
-                        >
-                            <label className="block mb-1 font-semibold">Password</label>
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="Password"
-                                className="input input-bordered w-full border-2 border-gray-300 rounded-xl focus:border-green-500 transition-all"
-                                required
-                            />
-                        </motion.div>
-
-                        {passwordMsg && (
-                            <p className="text-red-500 text-sm font-medium">{passwordMsg}</p>
-                        )}
-
-                        <motion.button
-                            type="submit"
-                            className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl font-bold shadow-lg hover:shadow-green-300 transition-all"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.98 }}
-                        >
-                            Submit
-                        </motion.button>
-                    </form>
-
-                    <div className="mt-6 text-center">
-                        <p className="text-gray-600 text-sm">
-                            Already have an account?{" "}
-                            <Link to="/login" className="text-green-500 font-bold hover:underline">
-                                Login
-                            </Link>
-                        </p>
-                    </div>
-
-                    <div className="mt-6 text-center ">
-                        <span className="block text-gray-500 mb-2 text-sm">Or register with</span>
-                        <motion.button
-                            onClick={handleGoogle}
-                            className="px-6 py-3 bg-red-500 w-full text-white rounded-xl shadow-md hover:bg-red-600 hover:shadow-red-300 transition-all"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Google
-                        </motion.button>
-                    </div>
-                </motion.div>
-            </motion.div>
-        </div>
-    );
+          <div className="mt-8 text-center">
+            <span className="block text-gray-500 mb-3 text-sm">
+              Or register with
+            </span>
+            <motion.button
+              onClick={handleGoogle}
+              className="px-6 py-3 bg-red-500 w-full text-white rounded-xl shadow-lg hover:bg-red-600 hover:shadow-red-300 transition-all font-semibold"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Google
+            </motion.button>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
 };
 
 export default Register;

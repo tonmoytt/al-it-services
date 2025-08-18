@@ -1,0 +1,25 @@
+/* Gradient text animation */
+.gradient-text {
+  font-size: 3rem; /* adjust as needed */
+  font-weight: 800;
+  text-align: center;
+  background: linear-gradient(270deg, #22c55e, #3b82f6, #8b5cf6);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 5s ease infinite;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+/* Hover scale effect */
+.gradient-text:hover {
+  transform: scale(1.1); 
+}
+
+/* Keyframes for gradient animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

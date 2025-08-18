@@ -8,6 +8,11 @@ import {
   FaMedal,
   FaUsers,
 } from "react-icons/fa";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import { Autoplay, EffectFade, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react"; 
 
 const learningSteps = [
   { step: 1, title: "Discover Concepts", desc: "Learn basics step by step.", icon: <FaLightbulb className="text-yellow-400 text-4xl" /> },
@@ -31,15 +36,49 @@ const motivationalQuotes = [
   "🔥 Push your limits, grow your skills.",
 ];
 
+ const bgImages = [
+    "https://i.ibb.co.com/h1Lq8mSd/storebg.png",
+    
+    "https://i.ibb.co.com/mrCVNy8F/learning-flow-bg.png",
+  ];
+
 const LearningFlow = () => {
   return (
-    <div className="relative w-full min-h-screen bg-gradient-to-b from-indigo-50 via-purple-50 to-pink-50 text-gray-800 overflow-hidden px-6 md:px-20 py-20">
+    <div className="relative w-full min-h-screen bg-gradient-to-b from-indigo-50 via-purple-50 to-pink-50 text-gray-800 overflow-hidden ">
+      {/* bg */}
+      <div className="w-full relative mb-1 md:mb-16 bg-orange-100">
+       
+
+        <Swiper
+          modules={[Autoplay, Pagination, EffectFade]}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          loop={true}
+          effect="fade"
+          pagination={{ clickable: true }}
+          className="hero min-h-[60vh] md:h-[330px] relative"
+        >
+          {bgImages.map((bg, index) => (
+            <SwiperSlide key={index}>
+              <div
+                className="h-full w-full bg-cover bg-center relative"
+                style={{ backgroundImage: `url(${bg})` }}
+              >
+                {/* gradient overlay for better visibility */}
+                <div className="absolute  bg-black/40"></div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+     
+     
       {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-16"
+        className="text-center mb-16 px-6 md:px-20 py-6"
       >
         <h1 className="text-3xl md:text-5xl font-extrabold text-purple-700 mb-4 drop-shadow-md">
           🌟 Start Your Learning Journey
@@ -108,6 +147,7 @@ const LearningFlow = () => {
           </motion.div>
         ))}
       </section>
+  
 
       {/* Timeline Section */}
       <section className="relative mb-20">
@@ -150,6 +190,48 @@ const LearningFlow = () => {
           Start Learning Now 🚀
         </motion.button>
       </section>
+
+      {/* last section  */}
+
+      <motion.div
+          className="text-black bg-gray-600 hidden md:block space-y-6 max-w-7xl mx-auto my-10 py-6 px-10 rounded-xl"
+
+
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="shadow-2xl shadow-red-500 space-y-12 px-4 py-4">
+
+
+            <div className="bg-white/10 shadow-lg shadow-cyan-400 backdrop-blur-lg p-6 rounded-xl  hover:shadow-cyan-400/40 transition">
+              <h2 className="text-xl font-bold text-cyan-300">📚 Premium Courses</h2>
+              <p className="text-gray-200 text-sm">
+                Explore high-quality curated courses from top instructors.
+              </p>
+            </div>
+            <div className="bg-white/10 shadow-lg shadow-cyan-400 backdrop-blur-lg p-6 rounded-xl  hover:shadow-cyan-400/40 transition">
+              <h2 className="text-xl font-bold text-cyan-300">📚 Normal Course</h2>
+              <p className="text-gray-200 text-sm">
+                Explore high-quality curated courses from top instructors.
+              </p>
+            </div>
+
+            <div className="bg-white/10  shadow-lg shadow-cyan-400  backdrop-blur-lg p-6 rounded-xl hover:shadow-green-400/40 transition">
+              <h2 className="text-xl font-bold text-green-300">🚀 Fast Growth</h2>
+              <p className="text-gray-200 text-sm">
+                Learn quickly with practical content designed for real-world success.
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-lg p-6 rounded-xl  shadow-lg shadow-cyan-400 hover:shadow-yellow-400/40 transition">
+              <h2 className="text-xl font-bold text-yellow-300">💼 Career Ready</h2>
+              <p className="text-gray-200 text-sm">
+                Build skills that employers are looking for and unlock opportunities.
+              </p>
+            </div>
+          </div>
+        </motion.div>
     </div>
   );
 };

@@ -13,10 +13,53 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import "./style.css";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import { Autoplay, EffectFade, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+
 
 const Challange = () => {
+
+   const bgImages = [
+    "https://i.ibb.co.com/VWgtj6gz/bgstudy.jpg",
+    
+    "https://i.ibb.co.com/mrCVNy8F/learning-flow-bg.png",
+  ];
   return (
     <div className="relative w-full min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 text-gray-800 overflow-hidden">
+    
+    {/* bg */}
+    <div className="relative mb-1 md:mb-16 bg-orange-100">
+        
+
+        <Swiper
+          modules={[Autoplay, Pagination, EffectFade]}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          loop={true}
+          effect="fade"
+          pagination={{ clickable: true }}
+          className="hero min-h-[60vh] md:h-[330px] relative"
+        >
+          {bgImages.map((bg, index) => (
+            <SwiperSlide key={index}>
+              <div
+                className="h-full w-full bg-cover bg-center relative"
+                style={{ backgroundImage: `url(${bg})` }}
+              >
+                {/* gradient overlay for better visibility */}
+                <div className="absolute  bg-black/40"></div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+
+
+
       {/* Animated Floating Dots Background */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {Array.from({ length: 60 }).map((_, i) => (

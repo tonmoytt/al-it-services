@@ -5,6 +5,8 @@ import Marque from './AllHomes/Marquee/Marquee';
 import CourseShow from './AllHomes/CourseShow/CourseShow';
 import Courseregistetion from './AllHomes/Courseregistetion/Courseregistetion';
 import Slider from './AllHomes/Slider/Slider';
+import Specillaty from './AllHomes/Specillaty/Specillaty';
+import TeacherSwipe from './AllHomes/TeacherSwipe/TeacherSwipe';
 
 const Home = () => {
     return (
@@ -12,7 +14,9 @@ const Home = () => {
         
 
            <Benner></Benner>
+           <TeacherSwipe></TeacherSwipe>
            <Featured></Featured>
+           <Specillaty></Specillaty>
            <Marque></Marque>
            <Courseregistetion></Courseregistetion>
            <Slider></Slider>

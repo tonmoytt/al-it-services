@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Artificial Intelligence & ML",
+    "category": "ai-professor",
+    "image": "https://i.ibb.co.com/81ksT7Z/teacher6.jpg",
+    "alt": "AI and machine learning course banner"
+  },
+  {
+    "id": 2,
+    "name": "Web Development",
+    "category": "web-development",
+    "image": "https://i.ibb.co.com/CSsPdWB/teacher2.jpg",
+    "alt": "Web development code editor on screen"
+  },
+  {
+    "id": 3,
+    "name": "Data Science",
+    "category": "data-science",
+    "image": "https://i.ibb.co.com/39zqpbjD/teacher1.jpg",
+    "alt": "Data charts and analytics dashboard"
+  },
+  {
+    "id": 4,
+    "name": "Cybersecurity",
+    "category": "cybersecurity",
+    "image": "https://i.ibb.co.com/7dGgX24r/teacher3.webp",
+    "alt": "Cybersecurity lock and network visuals"
+  },
+  {
+    "id": 5,
+    "name": "Cloud Computing",
+    "category": "cloud-computing",
+    "image": "https://i.ibb.co.com/gLmnDvxH/teacher10.jpg",
+    "alt": "Cloud servers and connectivity"
+  },
+  {
+    "id": 6,
+    "name": "Mobile App Development",
+    "category": "mobile-app-development",
+    "image": "https://i.ibb.co.com/GQ7jYpQZ/teacher5.jpg",
+    "alt": "Smartphone UI wireframes"
+  },
+  {
+    "id": 7,
+    "name": "UI/UX Design",
+    "category": "ui-ux-design",
+    "image": "https://i.ibb.co.com/Q7yGWFyL/teacher11.jpg",
+    "alt": "Design tools and interface mockups"
+  },
+  {
+    "id": 8,
+    "name": "Digital Marketing",
+    "category": "digital-marketing",
+    "image": "https://i.ibb.co.com/VWSwzBV4/teacher12.jpg",
+    "alt": "Marketing analytics and social media icons"
+  },
+  {
+    "id": 9,
+    "name": "DevOps & CI/CD",
+    "category": "devops-cicd",
+    "image": "https://i.ibb.co.com/tT6tQtY5/teacher7.jpg",
+    "alt": "Pipeline and automation visuals"
+  },
+  {
+    "id": 10,
+    "name": "Blockchain & Web3",
+    "category": "blockchain-web3",
+    "image": "https://i.ibb.co.com/KjRpnnBT/teacher9.jpg",
+    "alt": "Blockchain network illustration"
+  }
+]

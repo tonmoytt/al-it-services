@@ -9,7 +9,7 @@ const Featured = () => {
     return (
         <div className="bg-fuchsia-200">
             {/* <h1 className="text-4xl mb-10 font-semibold text-center">Featured Course :</h1> */}
-            <h1 className="text-center text-3xl text-cyan-500 font-serif font-extrabold pt-3">OUR SERVICES</h1>
+            <h1 className="text-center text-3xl text-cyan-500 font-serif font-extrabold pt-3">Find Your Perfect Course</h1>
             
             <div className="flex justify-center my-4 space-x-1">
                 {Array(7).fill(0).map((_, idx) => (

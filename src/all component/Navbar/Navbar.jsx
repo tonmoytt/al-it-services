@@ -144,12 +144,8 @@ const Navbar = () => {
             { name: "Home", to: "/", icon: <FaHome className="mr-1 md:mr-0 text-base md:text-sm  text-indigo-500" /> },
             { name: "Course", to: "/store", icon: <FaStore className="mr-1 md:mr-0 text-sm  text-green-500" /> },
             { name: "About", to: "/about", icon: <FaInfoCircle className="mr-1 md:mr-0 text-sm  text-orange-500" /> },
-            !user && {
-                name: "Login",
-                to: "/login",
-                icon: <FaSignInAlt className="mr-1 md:mr-0 text-sm  text-blue-500" />,
-            },
-            user && {
+
+            {
                 name: " Challenge ",
                 to: "/challange",
                 icon: <FaTasks
@@ -159,11 +155,16 @@ const Navbar = () => {
 
                 //   description: "Daily tasks & coding practice",
             },
-            user && {
+            {
                 name: " Learning Flow",
                 to: "/learning-flow",
                 icon: <FaBook className="mr-1 md:mr-0 text-sm  text-purple-500" />,
                 // description: "Step-by-step roadmap to grow skills",
+            },
+            !user && {
+                name: "Login",
+                to: "/login",
+                icon: <FaSignInAlt className="mr-1 md:mr-0 text-sm  text-blue-500" />,
             },
         ].filter(Boolean);
 
@@ -286,8 +287,8 @@ const Navbar = () => {
                             {user ?
                                 <Link to="/" className="hidden md:block">
                                     <button onClick={() => {
-                                            handleLogout(() => setMenuOpen(false));
-                                        }} className="btn btn-outline border-green-500 text-green-500 hover:bg-green-500 hover:text-white md:text-lg lg:mr-4 transition-all duration-300">
+                                        handleLogout(() => setMenuOpen(false));
+                                    }} className="btn btn-outline border-green-500 text-green-500 hover:bg-green-500 hover:text-white md:text-lg lg:mr-4 transition-all duration-300">
                                         Logout
                                     </button>
                                 </Link> :
@@ -333,8 +334,8 @@ const Navbar = () => {
                             className="fixed top-0 right-0 h-full w-full bg-white dark:bg-gray-900 shadow-lg z-50 lg:hidden"
                         >
                             {/* Close Button */}
-                            <div className="flex items-center justify-between mb-6">
-                                <h1 className="text-lg px-4 pt-3 md:text-2xl font-serif font-bold text-indigo-500 hover:scale-105 transition-all duration-300">
+                            <div className="flex items-center justify-between mb-6 ">
+                                <h1 className="text-xl rounded-full px-4   md:text-2xl font-serif font-bold text-indigo-500 hover:scale-105 transition-all duration-300">
                                     Studeon-institute
                                 </h1>
                                 <button
